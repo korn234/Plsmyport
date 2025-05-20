@@ -33,31 +33,34 @@
 }
 
 .dark {
-  --background: 230 25% 8%;
-  --foreground: 210 20% 98%;
-  --muted: 230 20% 15%;
-  --muted-foreground: 210 10% 70%;
-  --popover: 230 25% 8%;
-  --popover-foreground: 210 20% 98%;
-  --card: 230 25% 10%;
-  --card-foreground: 210 20% 98%;
-  --border: 240 20% 20%;
-  --input: 240 20% 20%;
-  --primary: 195 90% 55%;
+  /* Enhanced dark theme with deeper blues */
+  --background: 232 32% 6%;
+  --foreground: 213 31% 98%;
+  --muted: 223 27% 12%;
+  --muted-foreground: 215 16% 70%;
+  --popover: 232 32% 6%;
+  --popover-foreground: 213 31% 98%;
+  --card: 223 27% 8%;
+  --card-foreground: 213 31% 98%;
+  --border: 232 25% 18%;
+  --input: 232 25% 18%;
+  
+  /* Brighter primary and accent colors for better visibility in dark mode */
+  --primary: 195 100% 60%;
   --primary-foreground: 210 20% 98%;
-  --secondary: 240 20% 15%;
+  --secondary: 232 25% 15%;
   --secondary-foreground: 0 0% 98%;
-  --accent: 195 90% 55%;
+  --accent: 195 100% 60%;
   --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
+  --destructive: 0 72% 40%;
   --destructive-foreground: 0 0% 98%;
   --ring: 240 4.9% 83.9%;
   --radius: 0.5rem;
   
   /* 3D Effect Colors Dark Mode */
-  --shadow-color: 230 30% 5%;
-  --glow-color: 195 100% 40%;
-  --surface-color: 230 25% 12%;
+  --shadow-color: 230 30% 3%;
+  --glow-color: 195 100% 50%;
+  --surface-color: 230 25% 10%;
 }
 
 @layer base {
@@ -72,10 +75,36 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Improved scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  button, a, input, select, textarea {
+    transition: all 0.2s ease;
   }
 }
 
