@@ -1,17 +1,5 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from 'ws';
+// ไฟล์นี้ถูกปรับให้ไม่ต้องใช้ฐานข้อมูลแล้ว
+// เพื่อความเข้ากันได้ (compatibility) ยังคงมีไฟล์นี้อยู่แต่ไม่มีการใช้งานจริง
 import * as schema from '@shared/schema';
 
-// This is needed for Neon database to work with WebSockets
-neonConfig.webSocketConstructor = ws;
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL must be set. Did you forget to provision a database?");
-}
-
-// Create connection pool
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-
-// Create drizzle instance
-export const db = drizzle(pool, { schema });
+console.log("ไม่ใช้ฐานข้อมูล: กำลังใช้ระบบจัดเก็บข้อมูลในหน่วยความจำ (MemStorage) แทน");

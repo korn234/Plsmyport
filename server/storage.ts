@@ -1,13 +1,9 @@
 import { 
-  users, 
   type User, 
   type InsertUser,
-  contactSubmissions,
   type ContactSubmission,
   type InsertContactSubmission
 } from "@shared/schema";
-import { db } from "./db";
-import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // User methods
@@ -20,32 +16,47 @@ export interface IStorage {
   getContactSubmissions(): Promise<ContactSubmission[]>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private users: User[] = [];
+  private contactSubmissions: ContactSubmission[] = [];
+  private nextUserId = 1;
+  private nextSubmissionId = 1;
+
   // User methods
   async getUser(id: number): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user;
+    return this.users.find(user => user.id === id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user;
+    return this.users.find(user => user.username === username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db.insert(users).values(insertUser).returning();
+    const now = new Date().toISOString();
+    const user: User = {
+      id: this.nextUserId++,
+      ...insertUser,
+      createdAt: now
+    };
+    this.users.push(user);
     return user;
   }
 
   // Contact submission methods
   async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
-    const [result] = await db.insert(contactSubmissions).values(submission).returning();
-    return result;
+    const now = new Date().toISOString();
+    const contactSubmission: ContactSubmission = {
+      id: this.nextSubmissionId++,
+      ...submission,
+      createdAt: now
+    };
+    this.contactSubmissions.push(contactSubmission);
+    return contactSubmission;
   }
 
   async getContactSubmissions(): Promise<ContactSubmission[]> {
-    return await db.select().from(contactSubmissions);
+    return [...this.contactSubmissions];
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();
