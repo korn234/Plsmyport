@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 const features = [
   {
     icon: <LineChart className="h-10 w-10" />,
-    title: "Data-Driven Insights",
-    description: "Transform complex data into actionable business intelligence that gives you a competitive edge with 3D visualization.",
+    title: "ข้อมูลเชิงลึกจากการวิเคราะห์",
+    description: "เปลี่ยนข้อมูลที่ซับซ้อนให้เป็นข้อมูลธุรกิจที่นำไปใช้งานได้ ให้คุณได้เปรียบคู่แข่งด้วยการแสดงผลแบบ 3D",
     color: "from-blue-500 to-cyan-400"
   },
   {
     icon: <Cpu className="h-10 w-10" />,
-    title: "Custom Solutions",
-    description: "Tailored technology solutions designed specifically for your unique business challenges using cutting-edge 3D tech.",
+    title: "โซลูชันที่ปรับแต่งเฉพาะคุณ",
+    description: "โซลูชันเทคโนโลยีที่ออกแบบมาเฉพาะสำหรับความท้าทายทางธุรกิจของคุณ ด้วยเทคโนโลยี 3D ล้ำสมัย",
     color: "from-purple-500 to-indigo-500"
   },
   {
     icon: <Lock className="h-10 w-10" />,
-    title: "Enterprise Security",
-    description: "Industry-leading security protocols with 3D monitoring systems that keep your data protected at all times.",
+    title: "ความปลอดภัยระดับองค์กร",
+    description: "โปรโตคอลความปลอดภัยชั้นนำของอุตสาหกรรมพร้อมระบบตรวจสอบแบบ 3D ที่ช่วยปกป้องข้อมูลของคุณตลอดเวลา",
     color: "from-amber-500 to-red-500"
   }
 ];
@@ -27,14 +27,14 @@ export default function FeatureSection() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.3
       }
     }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   return (
@@ -45,7 +45,7 @@ export default function FeatureSection() {
       
       <div className="container relative z-10 mx-auto px-4 md:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-16 fade-up-element"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -57,10 +57,10 @@ export default function FeatureSection() {
             </div>
           </div>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-secondary dark:text-white mb-4 dark:glow-text">
-            Why Choose TechCorp?
+            ทำไมต้องเลือกเรา?
           </h2>
           <p className="text-gray-dark dark:text-gray-300 max-w-2xl mx-auto">
-            We combine technological expertise with business acumen to deliver 3D solutions that drive real results.
+            เราผสมผสานความเชี่ยวชาญด้านเทคโนโลยีกับความเข้าใจในธุรกิจเพื่อให้บริการโซลูชัน 3D ที่สร้างผลลัพธ์จริง
           </p>
         </motion.div>
         
@@ -74,7 +74,7 @@ export default function FeatureSection() {
           {features.map((feature, index) => (
             <motion.div 
               key={index} 
-              className="card-3d h-full"
+              className="card-3d h-full stagger-fade-element feature-card"
               variants={itemVariants}
               whileHover={{ 
                 y: -10, 
