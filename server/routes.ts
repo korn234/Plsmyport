@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import nodemailer from "nodemailer";
@@ -60,6 +60,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.error("Error processing contact form:", error);
         res.status(500).json({ success: false, message: "An error occurred while processing your request" });
       }
+    }
+  });
+
+  // Get all contact submissions (for admin page)
+  app.get("/api/submissions", async (req, res) => {
+    try {
+      const submissions = await storage.getContactSubmissions();
+      res.status(200).json(submissions);
+    } catch (error) {
+      console.error("Error fetching contact submissions:", error);
+      res.status(500).json({ 
+        success: false, 
+        message: "An error occurred while fetching contact submissions" 
+      });
     }
   });
 
