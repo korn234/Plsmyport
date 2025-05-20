@@ -1,29 +1,25 @@
 import { Helmet } from "react-helmet";
 import HeroSection from "@/sections/HeroSection";
-import FeatureSection from "@/sections/FeatureSection";
+import AboutMeSection from "@/sections/AboutMeSection";
 import ServicesSection from "@/sections/ServicesSection";
-import AboutSection from "@/sections/AboutSection";
-import TestimonialsSection from "@/sections/TestimonialsSection";
-import CTASection from "@/sections/CTASection";
-import ContactSection from "@/sections/ContactSection";
+import ProjectsSection from "@/sections/ProjectsSection";
+import CertificateSection from "@/sections/CertificateSection";  // Fix import name
 
 export default function Home() {
   return (
     <>
       <Helmet>
-        <title>TechCorp Solutions | Innovative Business Technology</title>
+        <title>ปริพัฒน์ รอดหยู่ - Portfolio (Refined)</title>
         <meta 
           name="description" 
-          content="Transform your business with cutting-edge technology solutions. TechCorp provides digital transformation, cloud infrastructure, cybersecurity, and custom software solutions."
+          content="Portfolio website of Paripat Rodyoo - Student Developer and Technology Enthusiast"
         />
       </Helmet>
       <HeroSection />
-      <FeatureSection />
+      <AboutMeSection />
       <ServicesSection />
-      <AboutSection />
-      <TestimonialsSection />
-      <CTASection />
-      <ContactSection />
+      <ProjectsSection />
+      <CertificateSection />  {/* Match the import name */}
     </>
   );
 }
