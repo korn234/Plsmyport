@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -74,12 +74,12 @@
   
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sarabun', 'Inter', sans-serif;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Prompt', 'Poppins', sans-serif;
   }
   
   /* Improved scrollbar for dark mode */
@@ -109,18 +109,19 @@
 }
 
 @layer components {
-  /* 3D Card Effect */
+  /* 3D Card Effect with improved animations */
   .card-3d {
     @apply relative bg-white dark:bg-secondary/20 rounded-lg overflow-hidden;
     transform-style: preserve-3d;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 
       0 10px 20px rgba(0, 0, 0, 0.1),
       0 6px 6px rgba(0, 0, 0, 0.1);
   }
   
   .card-3d:hover {
-    transform: translateY(-5px) scale(1.01);
+    transform: translateY(-8px) scale(1.02) rotateX(2deg);
     box-shadow: 
       0 15px 30px rgba(0, 0, 0, 0.15),
       0 10px 10px rgba(0, 0, 0, 0.1);
@@ -139,7 +140,30 @@
       0 15px 30px rgba(0, 0, 0, 0.4),
       0 10px 10px rgba(0, 0, 0, 0.2),
       0 0 0 1px rgba(255, 255, 255, 0.07),
-      0 0 20px 5px rgba(var(--glow-color), 0.15);
+      0 0 20px 5px rgba(var(--glow-color), 0.2);
+  }
+  
+  /* Scroll Animation Classes */
+  .fade-up-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-up-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .stagger-fade-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .stagger-fade-element.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   /* Tech Button */

@@ -81,13 +81,13 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <div className="inline-block px-3 py-1 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
-              <span className="inline-block mr-1">✨</span> Next-Generation Tech Solutions
+              <span className="inline-block mr-1">✨</span> เทคโนโลยีล้ำสมัยแห่งอนาคต
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6 glow-text">
-              Transform Your Business With <span className="text-accent glow-text">3D Technology</span>
+              เปลี่ยนธุรกิจของคุณด้วย <span className="text-accent glow-text">เทคโนโลยี 3D</span>
             </h1>
             <p className="text-gray-200 text-lg md:text-xl mb-8 max-w-xl mx-auto md:mx-0">
-              Leveraging cutting-edge solutions to drive growth, efficiency, and innovation for forward-thinking organizations.
+              ใช้โซลูชันที่ทันสมัยเพื่อขับเคลื่อนการเติบโต เพิ่มประสิทธิภาพ และสร้างนวัตกรรมสำหรับองค์กรที่มองไปข้างหน้า
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
               <Button
@@ -95,7 +95,7 @@ export default function HeroSection() {
                 className="btn-tech px-8 py-3 bg-white text-primary hover:bg-gray-100 rounded-md transition-all font-medium text-center"
               >
                 <span className="relative z-10 flex items-center">
-                  Our Services
+                  บริการของเรา
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </span>
               </Button>
@@ -104,7 +104,7 @@ export default function HeroSection() {
                 variant="outline" 
                 className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:bg-opacity-10 rounded-md transition-all font-medium text-center glow-border"
               >
-                Contact Us
+                ติดต่อเรา
               </Button>
             </div>
           </motion.div>
