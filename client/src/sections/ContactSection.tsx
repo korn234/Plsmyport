@@ -59,7 +59,7 @@ export default function ContactSection() {
       toast({
         title: "Message Sent Successfully!",
         description: "Our 3D technology team will get back to you as soon as possible.",
-        variant: "success",
+        variant: "default",
       });
       form.reset();
     } catch (error) {
